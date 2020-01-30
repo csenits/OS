@@ -68,4 +68,19 @@ void printFileProperties(struct stat stats)
     printf("\nModified on: %d-%d-%d %d:%d:%d", dt.tm_mday, dt.tm_mon, dt.tm_year + 1900, 
                                               dt.tm_hour, dt.tm_min, dt.tm_sec);
 
+
+
+    printf("\nFile Permissions: \t");
+    printf( (S_ISDIR(stats.st_mode)) ? "d" : "-");
+    printf( (stats.st_mode & S_IRUSR) ? "r" : "-");
+    printf( (stats.st_mode & S_IWUSR) ? "w" : "-");
+    printf( (stats.st_mode & S_IXUSR) ? "x" : "-");
+    printf( (stats.st_mode & S_IRGRP) ? "r" : "-");
+    printf( (stats.st_mode & S_IWGRP) ? "w" : "-");
+    printf( (stats.st_mode & S_IXGRP) ? "x" : "-");
+    printf( (stats.st_mode & S_IROTH) ? "r" : "-");
+    printf( (stats.st_mode & S_IWOTH) ? "w" : "-");
+    printf( (stats.st_mode & S_IXOTH) ? "x" : "-");
+    printf("\n");
+
 }
